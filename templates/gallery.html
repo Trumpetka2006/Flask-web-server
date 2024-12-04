@@ -1,0 +1,28 @@
+{% extends "core.html" %}
+
+{% block content %}
+    Tohle je galerie těch nejlepších fotek co na světě existují.
+    {% for index in file %}
+        <div class="row">
+            <div class="col-6">
+                <img class="mw-100 gallery-img" src="static/gallery/{{index}}" alt="">
+            </div>
+        </div>
+    {% endfor %}
+    {% if session["uzivatel"] == "Guest" %}
+    <div class="row">
+        <div class="col-12">
+            <h2>Nahrát obrázek do galerie</h2>
+            <form action="/gallery/upload" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Default file input example</label>
+                    <input class="form-control" type="file" id="formFile" name="soubor">
+                </div>
+                <div class="mb-3">
+                    <input class="btn btn-primary" type="submit" value="Odeslat">
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link href="{{url_for('static',filename='bootstrap/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='style.css')}}" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-4">
+                    <h1>Aplikace Flask</h1>
+                </div>
+                <div class="col-4" style="text-align: center;"><h1>{{title}}</h1></div>
+                <div class="col-4" style="text-align: right;">
+                    {% if "uzivatel" in session %}
+                        <a href="/loguot"><h1>{{session["uzivatel"]}}</h1></a>
+                    {% else %}
+                        <a class="tool" href="/login">Přihlásit se</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                {% block content %}{% endblock %}
+            </div>
+            <div class="col-lg-3">
+                <div class="sidebar">
+                    {% include "menu.html" %}
+                </div>
+            </div>
+        </div>
+    
+    
+    </div>
+    <footer>
+        <div class="container-fluid">
+            <div class="fixed-bottom">&copy; 2024 CompanyTM</div>
+        </div>
+    </footer>
+        
+</body>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</html>

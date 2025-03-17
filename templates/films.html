@@ -1,0 +1,38 @@
+{% extends "core.html" %}
+{% block content %}
+
+<div>
+    <form action="/films/add" method="POST">
+        <div class="input-group mb-3">
+            <input class="form-control w-1" type="text" name="title" id="" placeholder="Název" required>
+            <input class="form-control w-1" type="text" name="desc" id="" placeholder="Popis" required>
+            <input class="form-control w-1" type="text" name="year" id="" placeholder="Rok" required>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Přidat nový film">
+    </form>
+</div>
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Název</th>
+                <th>Popis</th>
+                <th>Rok</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in movies %}
+            <tr>
+                <td>{{i[1]}}</td>
+                <td>{{i[2]}}</td>
+                <td>{{i[3]}}</td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+    
+</div>
+
+{% endblock %}

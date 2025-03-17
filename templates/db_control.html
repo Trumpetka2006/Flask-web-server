@@ -1,0 +1,36 @@
+{% extends "core.html" %}
+{% block content %}
+<div>
+    <h3>Ovladací panel databází</h3>
+    <div class="container m-1">
+        <div class="row">
+            <div class="col-8">
+                <a class="btn btn-primary mb-3" href="/db_control/state">Stav databází</a><p></p>
+                <a class="btn btn-primary mb-3" href="/db_control/film_actors">Seznam herců</a><p></p>
+                <form class="mb-3 controls" action="/db_control/add_user" method="post">
+                    <div class="input-group mb-3">
+                        <input class="form-control w-1" type="number" name="id" id="" placeholder="ID">
+                        <input class="form-control" type="text" name="username" id="" placeholder="Uživatel">
+                    </div>
+                    <input class="form-control mb-3" type="text" name="password" id="" placeholder="Heslo">
+                    
+                    <input class="btn btn-primary" type="submit" value="Přidat záznam">
+                </form>
+                <a class="btn btn-danger mb-3" href="">Reset databáze</a><p></p>
+                <a class="btn btn-danger mb-3" href="">DROP DATABASE</a><p></p>
+
+            </div>
+            <div class="col-4">
+            </div>
+        </div>
+       
+        
+    </div>
+    <h3>Výstup</h3>
+    <div class="container p-1 bg-dark text-white">
+        {% for i in output %}
+            <div>{{i}}</div><br>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

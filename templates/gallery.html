@@ -1,12 +1,30 @@
 {% extends "core.html" %}
 
 {% block content %}
-    Tohle je galerie těch nejlepších fotek co na světě existují.
+    {% if state == 0 %}
+    <div class="alert alert-success">
+        <strong>Úspěch!</strong> Obrazek by přidán do galerie.
+    </div>
+    {% endif %}
+    {% if state == 1 %}
+    <div class="alert alert-danger">
+        <strong>Něco se pokazilo!</strong> Obrázek nebylo možné přidat do galerie.
+    </div>
+    {% endif %}
+
+    <div>
+        Tohle je galerie těch nejlepších fotek co na světě existují.
+    </div>
+    <hr>
     {% for index in file %}
-        <div class="row">
+       <!--  <div class="row">
             <div class="col-6">
                 <img class="mw-100 gallery-img" src="static/gallery/{{index}}" alt="">
             </div>
+        </div> -->
+        <div class="card" style="margin-bottom: 20px;">
+            <img class="card-img " src="static/gallery/{{index}}" alt="">
+            <div class="card-footer">{{index}}</div>
         </div>
     {% endfor %}
     {% if session["uzivatel"] == "gres" %}
@@ -15,7 +33,7 @@
             <h2>Nahrát obrázek do galerie</h2>
             <form action="/gallery/upload" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
-                    <label for="formFile" class="form-label">Default file input example</label>
+                    <label for="formFile" class="form-label">Sdílej obrázek se světem!</label>
                     <input class="form-control" type="file" id="formFile" name="soubor">
                 </div>
                 <div class="mb-3">

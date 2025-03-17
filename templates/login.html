@@ -8,8 +8,8 @@
     <div class="col-4">
     <form action="/login" method="POST">
         {% if valid %}
-            <div class="mb-3 p-3 rounded-2 bg-danger">
-                Špatné jméno nebo heslo!
+            <div class="alert alert-danger">
+                <strong>Chyba!</strong> Špatné jméno nebo heslo!
             </div>
         {% endif %}
         <div class="mb-3">
@@ -25,9 +25,13 @@
             <input class="btn btn-primary" type="submit" value="Přihlásit se">
         </div>
     </form>
+    <a href="/signin">Nemáte účet? Vytvořteho!</a>
     </div>
     <div class="col-4"></div>
 </div>
+
+
+
 
 
 
